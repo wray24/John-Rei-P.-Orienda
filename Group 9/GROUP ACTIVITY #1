@@ -1,0 +1,23 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main(){
+	string name;
+	int month, day, year, age;
+	cout << "Enter your name: ";
+	getline(cin, name);
+	cout << "input numeric birthdate only.\n";
+	cout << "Month: ";
+	cin >> month;
+	cout << "Day: ";
+	cin >> day;
+	cout << "Year: ";
+	cin >> year;
+
+	age = 2025 - year;
+	
+	age -= (month >= 2 && day > 21);
+	
+	cout << "Hello " << name << ", you're " << age << " y/o.\n";
+	return 0;
+}
