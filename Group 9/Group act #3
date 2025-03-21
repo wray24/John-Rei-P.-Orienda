@@ -1,0 +1,213 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+#include <limits>
+#include <cstdlib>
+using namespace std;
+void bdate();
+void leapyear();
+void largest();
+void calc();
+void avg();
+void clearscreen();
+int main(){
+	
+	int choice;
+	char again;
+	
+	do{
+			clearscreen();
+			cout <<"xxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
+	cout << "1. Age calculator\n";
+	cout << "2. Leap year checker\n";
+	cout << "3. 3 digit Largest number\n";
+	cout <<  "4. Calculator\n";
+	cout << "5. Average calculator\n";
+	cout << "6. Exit.\n";
+	cout << "Enter your choice: ";
+	cin >> choice;
+	cout <<"xxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
+	while (cin.fail()){
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "Enter valid option only.\n";
+		cout << "1. Age calculator\n";
+    	cout << "2. Leap year checker\n";
+    	cout << "3. 3 digit Largest number\n";
+    	cout <<  "4. Calculator\n";
+    	cout << "5. Average calculator\n";
+    	cout << "Enter your choice: ";
+    	cin >> choice;
+    	cout <<"xxxxxxxxxxxxxxxxxxxxxxxxxxx\n";}
+		switch(choice){
+		case 1:
+		bdate();
+		break;
+		case 2:
+		leapyear();
+		break;
+		case 3:
+		largest();
+		break;
+		case 4:
+		calc();
+		break;
+		case 5:
+		avg();
+		break;
+		default:
+		cout << "Enter valid input only.\n";
+	}
+		cout << "Want to check again(y/n)?  ";
+		cin >> again;
+	} while(again == 'Y' || again == 'y');
+	cout << "Thank you for using this.\n";
+	return 0;
+}
+
+void bdate(){
+	string name;
+	int month, day, year, age;
+	cout << "Enter your name: ";
+	getline(cin, name);
+	cout << "input numeric birthdate only.\n";
+	cout << "Month: ";
+	cin >> month;
+	cout << "Day: ";
+	cin >> day;
+	cout << "Year: ";
+	cin >> year;
+	
+	while(cin.fail() || month <= 0 || day <= 0 || year <= 0){
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "Please enter valid input.\n";
+		cout << "input numeric birthdate only.\n";
+	cout << "Month: ";
+	cin >> month;
+	cout << "Day: ";
+	cin >> day;
+	cout << "Year: ";
+	cin >> year;
+	}
+	
+	age = 2025 - year;
+	
+	age -= (month >= 3 && day > 21);
+	
+	cout << "Hello " << name << ", you're " << age << " y/o.\n";
+}
+void leapyear(){
+	int year;
+	cout << "Enter year: ";
+	cin >> year;
+		while(cin.fail() || year <= 0){
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cout << "Please enter valid year.\n";
+			cout << "Enter year: ";
+        	cin >> year;
+		}
+	if(year % 4 == 0){
+		cout << "It's a leap year!\n";
+	}
+	else{
+		cout << "It's not a leap year.\n";
+	}
+}
+void largest(){
+	int number, hundreds, tenths, ones;
+	string str_num;
+	cout << "Enter 3 digits: ";
+	cin >> number;
+	str_num = to_string(number);
+	if(cin.fail()){
+	while(cin.fail()){
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "Please enter number only.\n";
+		cout << "Enter 3 digits: ";
+		cin >>number;
+	}
+	}
+	else if (str_num.length() > 3){
+		while (str_num.length() > 3){
+			cout << "Please enter 3 digits number only.\n";
+			cout << "Enter 3 digits: ";
+			cin >> str_num;
+		}
+		number = stoi(str_num);
+	}
+	ones = number/100;
+	tenths = (number/10) % 10;
+	hundreds = number % 10;
+	
+	int largest = hundreds;
+	
+	if(largest < tenths){
+		largest = tenths;
+	}
+	if (largest < ones){
+		largest = ones;
+	}
+	cout << "The largest digit among the three digit is " << largest << '\n';
+}
+void calc(){
+	cout << fixed << setprecision(2);
+	float num1, num2;
+	cout << "Enter 1st number: ";
+	cin >> num1;
+	cout << "Enter 2nd number: ";
+	cin >> num2;
+	
+	while(cin.fail()){
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "Please enter number only.\n";
+		cout << "Enter 1st number: ";
+	    cin >> num1;
+    	cout << "Enter 2nd number: ";
+    	cin >> num2;
+	}
+	
+	cout << "The sum of two number is " << num1 + num2 << '\n';
+	
+	cout << "The difference of two number is " << num1 - num2 << '\n';
+	
+	cout << "The product of two number is " << num1 * num2 << '\n';
+	
+	cout << "The qoutient of two number is " << num1 / num2 << '\n';
+}
+void avg(){
+	int firstq, secondq, thirdq, fourthq;
+	cout << "Enter first quarter grade: ";
+	cin >> firstq;
+	cout << "Enter second quarter grade: ";
+	cin >> secondq;
+	cout << "Enter third quarter grade: ";
+	cin >> thirdq;
+	cout << "Enter fourth quarter grade: ";
+	cin >> fourthq;
+	
+	while(cin.fail()){
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "Please enter valid grade.\n";
+		cout << "Enter first quarter grade: ";
+	cin >> firstq;
+	cout << "Enter second quarter grade: ";
+	cin >> secondq;
+	cout << "Enter third quarter grade: ";
+	cin >> thirdq;
+	cout << "Enter fourth quarter grade: ";
+	cin >> fourthq;
+	}
+	cout << "Final average is " << (firstq + secondq + thirdq + fourthq) / 4 << '\n';
+}
+void clearscreen(){
+	#ifdef _WIN32
+	system("cls");
+	#else
+	system("clear");
+	#endif
+}
