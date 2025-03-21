@@ -23,7 +23,6 @@ int main(){
 	cout << "3. 3 digit Largest number\n";
 	cout <<  "4. Calculator\n";
 	cout << "5. Average calculator\n";
-	cout << "6. Exit.\n";
 	cout << "Enter your choice: ";
 	cin >> choice;
 	cout <<"xxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
