@@ -1,0 +1,34 @@
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <limits>
+using namespace std;
+int main(){
+	cout << fixed << setprecision(2);
+	int num1, num2;
+	string name;
+	cout << "Enter your name: ";
+	getline(cin, name);
+	cout << "Hello " << name << "!\n";
+	cout << "Enter two numbers seperated by " " (space).\n";
+	cout << "Enter two number: ";
+	cin >> num1 >> num2;
+	
+	while(cin.fail()){
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		cout << "Enter two numbers seperated by " " (space).\n";
+	cout << "Enter two number: ";
+	cin >> num1 >> num2;
+	}
+	
+	cout << "The sum of two number is " << num1 + num2 << '\n';
+	
+	cout << "The difference of two number is " << num1 - num2 << '\n';
+	
+	cout << "The product of two number is " << num1 * num2 << '\n';
+	
+	cout << "The qoutient of two number is " << num1 / num2 << '\n';
+	
+	cout << "The modulus of first number is " << num1 % num2 << '\n';
+}
