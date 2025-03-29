@@ -1,0 +1,36 @@
+#include <iostream>
+#include <limits>
+using namespace std;
+int main(){
+	int num, maxDiv;
+	int divisor = 2;
+	cout << "Enter positive number: ";
+	cin >> num;
+	while(cin.fail() || num <= 0){
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Enter valid input only.\n";
+   	cout << "Enter positive number: ";
+   	cin >> num;
+		}
+	cout << "The sum of the digits: ";
+	cin >> maxDiv;
+	while(cin.fail() || maxDiv <= 0){
+		cin.clear();
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Enter valid input only.\n";
+   	cout << "The sum of the digits: ";
+   	cin >> maxDiv;
+		}
+		do{
+			if(num % divisor == 0){
+				cout << "=========================\n";
+				cout << num << " is divisible by " << divisor << '\n';
+			}
+			else{
+				cout << "=========================\n";
+				cout << num << " is not divisible by " << divisor << '\n';
+			}
+			divisor++;
+		}while(divisor <= maxDiv);
+}
